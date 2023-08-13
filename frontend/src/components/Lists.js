@@ -27,7 +27,6 @@ function CreateList() {
     );
 
     useEffect(() => {
-        console.log('useEffect');
         let isMounted = true;
     
         axios.get('http://localhost:4000/posts')
@@ -49,10 +48,8 @@ function CreateList() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const post = {name, description};
-        console.log("en handleSubmit, post es: ", post)
         try {
             const response = await dispatch(addPostAsync(post));
-            console.log("en handleSubmit, response es: ", response[response.length - 1])
             dispatch(addPost(response[response.length - 1]));
 
             setName('');
